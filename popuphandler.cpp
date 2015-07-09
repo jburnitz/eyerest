@@ -4,7 +4,9 @@
 #include <QMainWindow>
 #include <QObject>
 #include <QDebug>
+
 #define WAIT_MINUTES ( 20 )
+#define REST_SECONDS ( 20 )
 
 PopupHandler::PopupHandler(QList<QMainWindow *> windowList) : QObject()
 {
@@ -22,7 +24,9 @@ void PopupHandler::BeginTimers(){
 
 void PopupHandler::ShowAllWindows(){
 
-    QTimer::singleShot(2000, this, SLOT(HideAllWindows()) );
+    QTimer::singleShot( 1000 * REST_SECONDS, this, SLOT(HideAllWindows()) );
+	
+	qDebug() << "rest";
 
     foreach( QMainWindow* winPtr, windows){
         winPtr->showFullScreen();
