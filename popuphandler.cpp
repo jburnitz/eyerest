@@ -66,7 +66,8 @@ void PopupHandler::HideAllWindows(){
 
 void PopupHandler::UpdateTimerLabel(){
     foreach( QMainWindow* winPtr, windows){
-        ((QLabel*) winPtr->centralWidget() )->setNum( --secondsRemaining );
+        ((QLabel*) winPtr->centralWidget() )->setNum( secondsRemaining );
     }
+    secondsRemaining--;
     qDebug() << secondsRemaining;
 }
