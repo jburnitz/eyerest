@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QObject>
 #include <QDebug>
+#include <QDateTime>
 
 #define WAIT_MINUTES ( 20 )
 #define REST_SECONDS ( 20 )
@@ -26,7 +27,7 @@ void PopupHandler::ShowAllWindows(){
 
     QTimer::singleShot( 1000 * REST_SECONDS, this, SLOT(HideAllWindows()) );
 	
-	qDebug() << "rest";
+	qDebug() << "eyerest at " << QDateTime::currentDateTime().toString() ;
 
     foreach( QMainWindow* winPtr, windows){
         winPtr->showFullScreen();
