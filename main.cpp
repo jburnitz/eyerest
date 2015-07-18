@@ -3,9 +3,11 @@
 
 #include <QDesktopWidget>
 #include <QList>
+#include <QLabel>
 #include <QDebug>
 
 #include "popuphandler.h"
+#include "config.h"
 
 int main(int argc, char *argv[])
 {
@@ -19,6 +21,10 @@ int main(int argc, char *argv[])
 
         QMainWindow* winPtr = new QMainWindow();
 
+        QLabel* labelPtr = new QLabel();
+        labelPtr->setAutoFillBackground(true);
+        winPtr->setCentralWidget( labelPtr );
+
         winPtr->setGeometry(QApplication::desktop()->availableGeometry( screenItr ));
         winPtr->setStyleSheet("QMainWindow {background: 'black';}");
         windowList.append( winPtr );
@@ -26,8 +32,8 @@ int main(int argc, char *argv[])
         qDebug() << Q_FUNC_INFO << ": added screen " << winPtr->size();
     }
 
-    PopupHandler pop( windowList );
-    pop.BeginTimers();
+    PopupHandler popper( windowList );
+    popper.BeginTimers();
 
     return a.exec();
 }

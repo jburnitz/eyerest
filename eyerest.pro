@@ -16,4 +16,5 @@ SOURCES += main.cpp \
     popuphandler.cpp
 
 HEADERS  += \
-    popuphandler.h
+    popuphandler.h \
+    config.h
